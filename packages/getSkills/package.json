@@ -1,0 +1,13 @@
+{
+  "name": "getSkills",
+  "packageManager": "yarn@4.0.2",
+  "dependencies": {
+    "axios": "^1.6.2",
+    "cheerio": "^1.0.0-rc.12"
+  },
+  "devDependencies": {
+    "@types/node": "^20.9.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.3.2"
+  }
+}

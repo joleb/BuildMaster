@@ -28,7 +28,7 @@ axios.get(url)
   .then(async (response) => {
     if (response.status === 200) {
       const $ = load(response.data);
-      const skills: Array<Skill> = [];
+      const skills: Record<string,Skill> ={};
       const elements: Array<Element> = [];
       $('tr').slice(1).each((_, element) => {
         elements.push(element);
@@ -37,7 +37,7 @@ axios.get(url)
         // stop at 10
         //if (index > 10) return;
         const columns = $(element).find('td');
-        const skillId = columns.eq(0).text().trim();
+        const skillId =columns.eq(0).text().trim();
         const skillLink = columns.eq(1).find('a');
         const skillName = skillLink.text().trim();
         const skillUrl = skillLink.attr('href');
@@ -47,14 +47,14 @@ axios.get(url)
 
         const details = skillUrl ? await scrapeSkillDetails(`https://wiki.guildwars.com${skillUrl}`) : {};
 
-        skills.push({
+        skills[skillId] = {
           id: skillId,
           name: skillName,
           additionalDetails: {
             ...details,
             skillUrl: `https://wiki.guildwars.com${skillUrl}`, // Add the link to the skill itself
           },
-        });
+        };
 
         // Download the skill image
         if (details.imageAbsoluteUrl) {

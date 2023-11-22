@@ -28,5 +28,9 @@
 		"vite": "^4.4.2"
 	},
 	"type": "module",
-	"packageManager": "yarn@4.0.2"
+	"packageManager": "yarn@4.0.2",
+	"dependencies": {
+		"buffer": "^6.0.3",
+		"remeda": "^1.29.0"
+	}
 }
